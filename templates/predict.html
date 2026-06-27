@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="glass-card">
+            <div class="text-center mb-4">
+                <h3 class="fw-bold text-white mb-1"><i class="fa-solid fa-wand-magic-sparkles text-warning me-2"></i>AI Loan Eligibility Portal</h3>
+                <p class="text-secondary small">Input applicant profile matrices into the Random Forest Neural Array</p>
+            </div>
+
+            <form action="{{ url_for('predict') }}" method="POST">
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label text-secondary small">Applicant Full Name</label>
+                        <input type="text" class="form-control" name="applicant_name" placeholder="Enter Full Name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label text-secondary small">Applicant Age</label>
+                        <input type="number" class="form-control" name="age" min="21" max="65" placeholder="Min 21 - Max 65" required>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-md-4">
+                        <label class="form-label text-secondary small">Gender</label>
+                        <select class="form-select" name="gender" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label text-secondary small">Marital Status</label>
+                        <select class="form-select" name="married" required>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label text-secondary small">Dependents</label>
+                        <select class="form-select" name="dependents" required>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3+">3+</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label text-secondary small">Education Core Tier</label>
+                        <select class="form-select" name="education" required>
+                            <option value="Graduate">Graduate</option>
+                            <option value="Not Graduate">Not Graduate</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label text-secondary small">Self Employed Status</label>
+                        <select class="form-select" name="self_employed" required>
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label text-secondary small">Applicant Monthly Income (₹)</label>
+                        <input type="number" class="form-control" name="income" placeholder="e.g. 45000" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label text-secondary small">Co-Applicant Monthly Income (₹)</label>
+                        <input type="number" class="form-control" name="co_income" value="0" required>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4">
+                        <label class="form-label text-secondary small">Loan Amount Required (in Thousands ₹)</label>
+                        <input type="number" class="form-control" name="loan_amt" placeholder="e.g. 300 for ₹3,00,000" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label text-secondary small">Repayment Term (Months)</label>
+                        <select class="form-select" name="term" required>
+                            <option value="360">360 Months (30 Years)</option>
+                            <option value="240">240 Months (20 Years)</option>
+                            <option value="180">180 Months (15 Years)</option>
+                            <option value="120">120 Months (10 Years)</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label text-secondary small">Credit Bureau History Score</label>
+                        <select class="form-select" name="credit_hist" required>
+                            <option value="1.0">Clear Record / No Delinquencies (1.0)</option>
+                            <option value="0.0">Prior Default / Low Bureau Repayments (0.0)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label text-secondary small">Property Settlement Zone</label>
+                    <select class="form-select" name="property_area" required>
+                        <option value="Urban">Urban City Center</option>
+                        <option value="Semiurban">Semiurban Suburban Node</option>
+                        <option value="Rural">Rural Zone</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-premium w-100 py-3 font-monospace">
+                    EXECUTE RISK DISCRIMINANT ANALYTICAL MATRIX <i class="fa-solid fa-microchip ms-1"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
